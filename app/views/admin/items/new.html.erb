@@ -29,7 +29,8 @@
      <div class="form-group row">
       <label for="item_introduction" class="col-sm-3 col-form-label"><h4>ジャンル</h4></label>
       <div class="col-sm-9">  
-　    <%= f.select :genre, ['ケーキ', '焼き菓子', 'プリン','キャンディ'], {include_blank: '---'},class: "form-control form-control-sm" %>
+      <%= f.collection_select :genre_id, @genres, :id, :name %>
+　    <%#= f.select :genre, ['ケーキ', '焼き菓子', 'プリン','キャンディ'], {include_blank: '---'},class: "form-control form-control-sm" %>
 　    </div>
      </div>
 　   
