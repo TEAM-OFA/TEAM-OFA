@@ -14,6 +14,13 @@ class Admin::GenresController < ApplicationController
     end 
     
     def update
+     @genre = Genre.find(params[:id])
+     if @genre.update(genre_params)
+      flash[:notice]="ジャンル名更新しました"
+    redirect_to admin_genres_path
+    else
+      render :edit
+    end
     end 
     
  private
