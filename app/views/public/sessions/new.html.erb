@@ -1,13 +1,18 @@
-<h2>Log in</h2>
+<div class="container">
+  <div class="row">
+    <div class="mx-auto offset-lg-2">
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<h2>ログイン</h2>
+
+<%= form_with model: @customer, url: session_path(resource_name) do |f| %>
+<!--%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>-->
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :"メールアドレス" %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
   <div class="field">
-    <%= f.label :password %><br />
+    <%= f.label :"パスワード" %><br />
     <%= f.password_field :password, autocomplete: "current-password" %>
   </div>
 
@@ -19,8 +24,17 @@
   <% end %>
 
   <div class="actions">
-    <%= f.submit "Log in" %>
+    <%= f.submit "ログイン", class:'btn btn-sm btn-primary'%>
   </div>
 <% end %>
 
-<%= render "public/shared/links" %>
+
+<h5>会員登録をお済みでない方</h5>
+<%= link_to "こちら", new_customer_registration_path %>から新規登録を行ってください。
+<!--%= render "public/shared/links" %>-->
+
+    </div>
+  </div>
+</div>
+
+
