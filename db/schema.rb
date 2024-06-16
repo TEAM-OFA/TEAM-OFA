@@ -12,7 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2024_06_15_053228) do
 
-<<<<<<< HEAD
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -41,8 +40,6 @@ ActiveRecord::Schema.define(version: 2024_06_15_053228) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-=======
->>>>>>> ff8825c656bbaed323d8e88fed4f85790853a97e
   create_table "addresses", force: :cascade do |t|
     t.string "post_code", null: false
     t.string "address", null: false
