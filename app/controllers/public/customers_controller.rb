@@ -9,7 +9,9 @@ class Public::CustomersController < ApplicationController
     @customer.update(customer_params)
     redirect_to root_path
   end
-
+　
+　def show
+　end
 
 
 
