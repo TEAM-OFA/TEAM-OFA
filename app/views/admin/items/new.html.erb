@@ -1,0 +1,60 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+    
+     <h1 class="card-header text-center">商品新規登録</h1>
+　　　<%= form_with model: @item do |f| %>
+　　　
+　　 <div class="form-group row">
+      <label for="item_image" class="col-sm-3 col-form-label"><h4>商品画像</h4></label>
+      <div class="col-sm-9">
+       <%= f.file_field :image, accept: "image/*", class: "form-control" %>
+      </div>
+     </div>
+     
+     <div class="form-group row">
+      <label for="item_name" class="col-sm-3 col-form-label"><h4>商品名</h4></label>
+      <div class="col-sm-9">
+       <%= f.text_field :name, placeholder: "商品名", class: "form-control form-control-sm" %>
+      </div>
+     </div>
+        
+　   <div class="form-group row">
+      <label for="item_introduction" class="col-sm-3 col-form-label"><h4>商品説明</h4></label>
+      <div class="col-sm-9">
+       <%= f.text_area :introduction, placeholder: "ここに説明文を記述します", class: "form-control", style: "height: 150px;" %>
+      </div>
+     </div>
+     
+     <div class="form-group row">
+      <label for="item_introduction" class="col-sm-3 col-form-label"><h4>ジャンル</h4></label>
+      <div class="col-sm-9">  
+　    <%= f.select :genre, ['ケーキ', '焼き菓子', 'プリン','キャンディ'], {include_blank: '---'},class: "form-control form-control-sm" %>
+　    </div>
+     </div>
+　   
+　   <div class="form-group row">
+      <label for="item_price" class="col-sm-3 col-form-label"><h4>税抜価格</h4></label>
+      <div class="col-sm-9 input-group">
+       <%= f.number_field :price, class: "form-control form-control-sm", placeholder: "1000" %>円
+      </div>
+     </div>
+　
+　   <h4>販売ステータス</h4>
+　　  <%= f.radio_button :is_active, true %>
+　　  <%= f.label :is_active_true, "販売中" %>
+
+　　  <%= f.radio_button :is_active, false %>
+　　  <%= f.label :is_active_false, "販売停止" %>
+　　  
+　　
+　　  <div class="form-group row">
+    　　<div class="col-sm-9 offset-sm-3">
+        　<%= f.submit "新規登録", class: "btn btn-outline-success btn-block mt-3" %>
+　　　　</div>
+        </div>
+      <% end %>
+      
+    </div>
+  </div>
+</div>
