@@ -5,9 +5,16 @@ class Admin::ItemsController < ApplicationController
  end 
  
  def create
- end 
+    @item = Item.new(item_params)
+    if @item.save
+      redirect_to admin_items_path, notice: '商品が正常に作成されました。'
+    else
+      render :new
+    end
+  end
  
  def index
+  @items = Item.all
  end 
  
  def show
@@ -21,7 +28,7 @@ class Admin::ItemsController < ApplicationController
  
  private
   def item_params
-    params.require(:item).permit(:name, :introduction, :image, :is_active, :genre_id)  
+    params.require(:item).permit(:name, :introduction, :image, :is_active, :genre_id, :price)  
   end
 
 end
