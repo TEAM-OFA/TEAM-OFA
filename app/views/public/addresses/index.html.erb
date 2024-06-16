@@ -2,41 +2,49 @@
 
 <div class="row">
 
-<div class="col-xs-8">
+<div class="col-xs-12">
 
 <h2 class = "head-line text-center title_h2 btn-light-subtle" >配送先登録/一覧</h2>
+
 <%= form_with model: @address do |f| %>
-  <div class = "row" >
-    <div class="form-group">
+<div class = "row" >
+  <div class = "row col-12" >
+    <div class="form-group col-3">
       <%= f.label :郵便番号（ハイフンなし） %>
     </div>
-    <div class = "d-flex justify-content-center" >
+    <div class = "col-3" >
       <%= f.text_field :post_code, class: 'form-control address_post_code' %>
     </div>
+    <div class = "col-6" ></div>
   </div>
-  <div class = "row" >
-    <div class="form-group">
+
+  <div class = "row col-12" >
+    <div class="form-group col-3">
       <%= f.label :住所 %>
     </div>
-    <div class = "d-flex justify-content-center">
-      <%= f.text_area :address, class: 'form-control address_address' %>
+    <div class = "col-6">
+      <%= f.text_field :address, class: 'form-control address_address' %>
     </div>
   </div>
-  <div class = "row" >
-    <div class="form-group" >
+
+  <div class = "row col-12" >
+    <div class="form-group col-3" >
       <%= f.label :宛先 %>
     </div>
-    <div>
-      <%= f.text_area :name, class: 'form-control address_name' %>
+    <div class = "col-3">
+      <%= f.text_field :name, class: 'form-control address_name' %>
     </div>
-    <div>
+    <div class = "col-3" ></div>
+    <div class = "col-3">
       <%= f.submit "新規登録", class: 'btn btn-success' %>
     </div>
   </div>
+
+</div>
 <% end %>
 
 <div class="col-30 ml-2">
-<table class="table table-striped table-bordered border-dark">
+<table class="table table-striped table-bordered">
   <thead>
     <tr>
       <th>郵便番号</th>
