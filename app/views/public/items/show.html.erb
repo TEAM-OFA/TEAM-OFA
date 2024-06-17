@@ -1,0 +1,38 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-12">
+      <h4 class="bg-danger text-center text-white py-2">商品詳細</h4>
+    </div>
+    <div class="col-md-4">
+      <%= image_tag @item.image, size: "250x180", class: "img-fluid" %>
+    </div>
+    <div class="col-md-8">
+      <table class="table">
+        <tbody>
+          <tr>
+            <td><%= @item.name %></td>
+          </tr>
+          <tr>
+            <td><%= @item.introduction %></td>
+          </tr>
+          <tr>
+            <td>¥<%= number_with_delimiter(@item.with_tax_price) %>(税込)</td>
+          </tr>
+          <tr>
+            <td>
+              <% if @item.is_active %>
+                <%= form_with(model: @cart_item, url:cart_items_path, local: true) do |f| %>
+                 <%= f.hidden_field :item_id, value: @item.id %>
+                 <%= f.select :amount, *[1..5], { prompt: "個数選択" }, class: "form-control" %>
+                 <%= f.submit "カートに入れる", class: "btn btn-outline-danger mt-2" %>
+                <% end %>
+              <% else %>
+                 <p>この商品は現在販売停止中です。</p>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
