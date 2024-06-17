@@ -54,7 +54,7 @@
       </thead>
       <tbody>
 
-        <% @customer.address.each do |address| %>
+        <% @customer.addresses.each do |address| %>
         <tr>
           <td><%= address.post_code %></td>
           <td><%= address.address %></td>
