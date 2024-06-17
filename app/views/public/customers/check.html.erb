@@ -16,9 +16,9 @@
 
 
 
-        <%= link_to "退会しない(本当はマイページへ行きたい)", root_path, class:'btn btn-sm btn-primary' %>
+        <%= link_to "退会しない", customer_path(current_customer), class:'btn btn-sm btn-primary' %>
 
-        <%= link_to "退会する", out_customers_path, method: :patch, class:'btn btn-sm btn-danger', data: { confirm: "本当に退会しますか？" } %>
+        <%= link_to "退会する", out_customers_path(current_customer), method: :patch, class:'btn btn-sm btn-danger', data: { confirm: "本当に退会しますか？" } %>
 
 
 
