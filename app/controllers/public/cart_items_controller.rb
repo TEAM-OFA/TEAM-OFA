@@ -1,6 +1,8 @@
 class Public::CartItemsController < ApplicationController
+  before_action :authenticate_customer!, only: [:create]
 
   def index
+    @cart_items = CartItem.all
         
   end
   
@@ -11,6 +13,7 @@ class Public::CartItemsController < ApplicationController
   end 
   
   def update
+    @cart_item = CartItem.find(cart_item_params)
   end 
   
   def destroy

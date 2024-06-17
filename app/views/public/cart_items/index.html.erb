@@ -1,8 +1,42 @@
 <div class="container mt-5">
   <div class="row justify-content-center">
-    <div class="col-md-12">
+    <div class="col-md-5">
 　　　<h4 class="bg-info text-center text-white py-2">ショッピングカート</h4>
 　　　
+　　</div>
+　　<div class="col-md-12">
+　　　   <table class="table table-bordered">
+           <thead class="thead-secondary bg-info text-white">
+              <tr>
+                <th scope="col">商品名</th>
+                <th scope="col">単価(税込)</th>
+                <th scope="col">数量</th>
+                <th scope="col">小計</th>
+                <th></th>
+              </tr>
+            </thead>
+　　　   
+　　　  <tbody>
+　　　    <% @cart_items.each do |cart_item| %>
+　　　    <tr>
+            <td>
+              <%= image_tag cart_item.item.image, size: "50x50", class: "img-fluid" %>
+              <%= cart_item.item.name %>
+            </td>
+            <td><%= number_with_delimiter(cart_item.item.with_tax_price) %></td>
+            <td>
+              <%= cart_item.amount %>
+              <%= form_with(model: @cart_item, url:cart_items_path, method: :patch, local: true) do |f| %>
+              <%= f.select :amount, *[1..5], class: "form-control" %>
+              <%= f.submit "変更", class: "btn btn-outline-info mt-2" %>
+              <% end %>
+              </td>
+            <td><%= number_with_delimiter(cart_item.subtotal) %></td>
+            <td></td>
+          </tr>
+　　　    <% end %>
+　　　  </tbody>
+　　</div>
    </div>
   </div>
 </div>
