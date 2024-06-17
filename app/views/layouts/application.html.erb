@@ -12,17 +12,8 @@
 
   <body>
 
-    <header class = "border-bottom h-100 row" >
-      <h1 class = "m-5 border col-4">LOGO</h1>
-
-      <ul>
-        <li>
-          <div class = "" >
-            <%= link_to "About", about_path %>
-          </div>
-        </li>
-      </ul>
-
+    <header class = "border" >
+      <%= render 'layouts/header' %>
     </header>
 
     <%= yield %>

@@ -1,0 +1,67 @@
+<div class = "border-bottom row" >
+
+    <% if admin_signed_in? %>
+        <div class = "col-1" ></div>
+        <div class = "mt-4 mr-0 mb-4 ml-0" >
+          <%= image_tag 'nagano-cake.png', size: '150x100' %>
+        </div>
+
+        <div class = "col-5" ></div>
+
+        <div class = "mt-4 mr-0 mb-4 ml-0 row" >
+          <%= link_to "商品一覧", orders_path, class: "mt-auto mr-2 mb-auto ml-4" %>
+
+          <%= link_to "会員一覧", admin_customers_path, class: "mt-auto mr-2 mb-auto ml-4" %>
+
+          <%= link_to "注文履歴一覧", admin_path, class: "mt-auto mr-2 mb-auto ml-4" %>
+
+          <%= link_to "ジャンル一覧", admin_genres_path, class: "mt-auto mr-2 mb-auto ml-4" %>
+
+          <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "mt-auto mr-2 mb-auto ml-4" %>
+        </div>
+
+      <% elsif customer_signed_in? %>
+
+        <div class = "col-1" ></div>
+
+        <div class = "mt-4 mr-4 mb-4 ml-0" >
+          <%= image_tag 'nagano-cake.png', size: '150x100' %>
+        </div>
+
+        <div class = "col-4" ></div>
+
+        <p class = "mt-auto mr-0 mb-auto ml-0">ログイン中</p>
+
+          <div class = "m-auto row" >
+              <%= link_to "マイページ", customer_path(current_customer) %>
+            <div class = "col-1" ></div>
+              <%= link_to "商品一覧", orders_path %>
+            <div class = "col-1" ></div>
+              <%= link_to "カート", orders_path %>
+            <div class = "col-1" ></div>
+              <%= link_to "ログイン", customer_registration_path %>
+          </div>
+
+      <% else %>
+
+        <div class = "col-1" ></div>
+
+        <div class = "mt-4 mr-4 mb-4 ml-0" >
+          <%= image_tag 'nagano-cake.png', size: '150x100' %>
+        </div>
+
+        <div class = "col-5" ></div>
+
+        <div class = "m-auto row" >
+            <%= link_to "About", about_path %>
+          <div class = "col-1" ></div>
+            <%= link_to "商品一覧", orders_path %>
+          <div class = "col-1" ></div>
+            <%= link_to "新規登録", customer_session_path %>
+          <div class = "col-1" ></div>
+            <%= link_to "ログイン", customer_registration_path %>
+        </div>
+
+      <% end %>
+
+</div>
