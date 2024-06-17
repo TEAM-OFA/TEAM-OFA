@@ -1,10 +1,13 @@
 class Public::CartItemsController < ApplicationController
 
   def index
-    
+        
   end
   
   def create
+    @cart_item = current_customer.cart_items.new(cart_item_params)
+    @cart_item.save
+    redirect_to cart_items_path, notice: 'カートに商品を追加しました。'
   end 
   
   def update
