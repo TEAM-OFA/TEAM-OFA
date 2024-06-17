@@ -18,9 +18,9 @@ class Admin::GenresController < ApplicationController
      if @genre.update(genre_params)
       flash[:notice]="ジャンル名更新しました"
     redirect_to admin_genres_path
-    else
+     else
       render :edit
-    end
+     end
     end 
     
  private

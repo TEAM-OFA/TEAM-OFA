@@ -11,7 +11,7 @@ class Admin::ItemsController < ApplicationController
     else
       render :new
     end
-  end
+ end
  
  def index
   @items = Item.all
@@ -23,9 +23,18 @@ class Admin::ItemsController < ApplicationController
  
  def edit
   @item = Item.find(params[:id])
+  @genres = Genre.all
  end 
  
  def update
+  @item = Item.find(params[:id])
+  
+  if @item.update(item_params)
+   flash[:notice]="商品情報更新しました"
+    redirect_to admin_item_path(@item)
+  else
+      render :edit
+  end
  end 
  
  private
