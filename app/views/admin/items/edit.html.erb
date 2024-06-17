@@ -1,0 +1,50 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-12">
+     <h4 class="bg-info text-center text-white py-2">商品編集</h4>
+      <%= form_with model: @item, url: admin_item_path(@item), method: :patch do |f| %>
+        <div class="form-group row align-items-center">
+           <table class="table">
+             <tbody>
+              <tr>
+                <th scope="row">商品画像</th>
+                <td><%= f.file_field :image, accept: "image/*", class: "form-control" %></td>
+              </tr>
+              <tr>
+                <th scope="row">商品名</th>
+                <td><%= f.text_field :name, class: "form-control form-control-sm" %></td>
+              </tr>
+              <tr>
+                <th scope="row">商品説明</th>
+                <td><%= f.text_area :introduction, class: "form-control", style: "height: 150px;" %></td>
+              </tr>
+              <tr>
+                <th scope="row">ジャンル</th>
+                <td><%= f.collection_select :genre_id, @genres, :id, :name %></td>
+              </tr>
+              <tr>
+                <th scope="row">税抜価格</th>
+                <td><%= f.number_field :price, class: "form-control form-control-sm"%>円</td>
+              </tr>
+              <tr>
+                <th scope="row">販売ステータス</th>
+                <td>
+                  <%= f.radio_button :is_active, true %>
+　　  　　　　　　<%= f.label :is_active_true, "販売中" %>
+
+　　  　　　　　　<%= f.radio_button :is_active, false %>
+　　  　　　　　　<%= f.label :is_active_false, "販売停止" %>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="form-group row">
+    　　<div class="col-sm-5 offset-sm-3">
+    　　    <%= f.submit '変更を保存', class: "btn btn-outline-success btn-block mt-3" %>
+    　  </div>
+        </div>
+      <% end %>
+   </div>
+  </div>
+</div>
