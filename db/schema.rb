@@ -65,8 +65,6 @@ ActiveRecord::Schema.define(version: 2024_06_15_053228) do
     t.integer "amount", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "item_id", null: false
-    t.integer "customer_id", null: false
   end
 
   create_table "customers", force: :cascade do |t|
@@ -100,7 +98,6 @@ ActiveRecord::Schema.define(version: 2024_06_15_053228) do
     t.text "introduction", null: false
     t.integer "price", null: false
     t.boolean "is_active", default: true, null: false
-    t.integer "genre_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -113,16 +110,8 @@ ActiveRecord::Schema.define(version: 2024_06_15_053228) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "orders", force: :cascade do |t|
-    t.integer "payment_method", null: false
-    t.string "name", null: false
-    t.string "post_code", null: false
-    t.string "address", null: false
-    t.integer "status", null: false
-    t.integer "shopping_cost", null: false
-    t.integer "total_payment", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+  create_table "products", force: :cascade do |t|
+    t.integer "delivery_area", default: 0, null: false
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
