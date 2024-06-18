@@ -1,3 +1,45 @@
-<h1>TOP</h1>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-12">
+      <div id="image-slider" style="position: relative; width: 700px; height: 400px; margin: 0 auto;">
+        <%= image_tag "tyoko.jpg", class: "slider-image active", alt: "" %>
+        <%= image_tag "orange_cake.jpg", class: "slider-image", alt: "" %>
+        <%= image_tag "cake2.jpg", class: "slider-image", alt: "" %>
+        <%= image_tag "te.jpg", class: "slider-image", alt: "" %>
+        <%= image_tag "home.jpg", class: "slider-image", alt: "" %>
+        <%= image_tag "syu.jpg", class: "slider-image", alt: "" %>
+        <h5 class="text-overlay">
+          ようこそ、ながのCAKEへ！</br>
+          このサイトは、ケーキ販売のECサイトになります。</br>
+          会員でない方も商品の閲覧は出来ますが、</br>
+          購入には会員登録が必要になります。
+        </h5>
+      </div>
+    </div>
+  </div>
+      <div><h4 class="text-center mt-5 mb-5">~ 新着商品 ~</h4></div>
 
-<%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+   <div class="row mt-4 justify-content-center">
+    <% @items.each do |item| %>
+      <div class="col-lg-2 col-md-6 mb-4">
+        <div class="card">
+          <%= link_to item_path(item) do %>
+            <%= image_tag item.image, class: "card-img-top", alt: item.name %>
+          <% end %>
+          <div class="card-body">
+            <h6 class="card-title"><%= item.name %></h6>
+            <p class="card-text">¥<%= number_with_delimiter(item.price) %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+   </div>
+
+  <div class="row mt-4 justify-content-center">
+    <div class="col-12 text-center">
+      <%= link_to items_path, class: "btn btn-outline-danger" do %>
+        >> 他の商品を見る
+      <% end %>
+    </div>
+  </div>
+</div>

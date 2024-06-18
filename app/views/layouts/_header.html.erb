@@ -1,24 +1,23 @@
-<div class = "border-bottom row alert alert-warning" >
-
+<div class = "border-bottom row alert alert-danger">
 
     <% if admin_signed_in? %>
         <div class = "col-1" ></div>
-        <div class = "mt-2 mr-0 mb-2 ml-0" >
-          <%= image_tag 'nagano-cake.png', size: '200x133' %>
+        <div class = "mt-1 mr-0 mb-1 ml-0" >
+          <%= image_tag 'nagano3.png', size: '200x133' %>
         </div>
 
         <div class = "col-3" ></div>
 
         <div class = "mt-4 mr-0 mb-4 ml-0 row" >
-          <%= link_to "商品一覧", admin_items_path, class: "btn btn-outline-success mt-auto mr-2 mb-auto ml-4 text-dark" %>
+          <%= link_to "商品一覧", admin_items_path, class: "btn btn-light mt-auto mr-2 mb-auto ml-4 " %>
 
-          <%= link_to "会員一覧", admin_customers_path, class: "btn btn-outline-success mt-auto mr-2 mb-auto ml-4 text-dark" %>
+          <%= link_to "会員一覧", admin_customers_path, class: "btn btn-light mt-auto mr-2 mb-auto ml-4" %>
 
-          <%= link_to "注文履歴一覧", admin_path, class: "btn btn-outline-success mt-auto mr-2 mb-auto ml-4 text-dark" %>
+          <%= link_to "注文履歴一覧", admin_path, class: "btn btn-light mt-auto mr-2 mb-auto ml-4" %>
 
-          <%= link_to "ジャンル一覧", admin_genres_path, class: "btn btn-outline-success mt-auto mr-2 mb-auto ml-4 text-dark" %>
+          <%= link_to "ジャンル一覧", admin_genres_path, class: "btn btn-light mt-auto mr-2 mb-auto ml-4 " %>
 
-          <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-outline-success mt-auto mr-2 mb-auto ml-4 text-dark" %>
+          <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-light mt-auto mr-2 mb-auto ml-4 " %>
         </div>
 
       <% elsif customer_signed_in? %>
@@ -26,19 +25,19 @@
         <div class = "col-1" ></div>
 
         <div class = "mt-2 mr-4 mb-2 ml-0" >
-          <%= image_tag 'nagano-cake.png', size: '200x133' %>
+          <%= image_tag 'nagano3.png', size: '200x133' %>
         </div>
 
-        <p class = "h2 mt-auto mr-3 mb-auto ml-auto">Welcome to Nagano-Cake!</p>
+        <p class = "h2 mt-auto mr-3 mb-auto ml-auto text-white" style="font-family: 'Roboto', fantasy;">Welcome to NAGANO-Cake!</p>
 
           <div class = "mt-auto mb-auto ml-auto row col-5" >
-              <%= link_to "マイページ", customer_path(current_customer), class: "btn btn-outline-success text-dark" %>
+              <%= link_to "マイページ", customer_path(current_customer), class: "btn btn-light" %>
             <div class = "col-1" ></div>
-              <%= link_to "商品一覧", items_path, class: "btn btn-outline-success text-dark" %>
+              <%= link_to "商品一覧", items_path, class: "btn btn-light" %>
             <div class = "col-1" ></div>
-              <%= link_to "カート", cart_items_path, class: "btn btn-outline-success text-dark" %>
+              <%= link_to "カート", cart_items_path, class: "btn btn-light" %>
             <div class = "col-1" ></div>
-              <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "btn btn-outline-success text-dark" %>
+              <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "btn btn-light" %>
           </div>
 
       <% else %>
@@ -46,7 +45,7 @@
         <div class = "col-1" ></div>
 
         <div class = "mt-2 mr-4 mb-2 ml-0" >
-          <%= image_tag 'nagano-cake.png', size: '200x133' %>
+          <%= image_tag 'nagano3.png', size: '200x133' %>
         </div>
 
         <div class = "col-4" >
@@ -56,13 +55,13 @@
         </div>
 
         <div class = "mt-auto mr-0 mb-auto ml-auto row col-5" >
-            <%= link_to "About", about_path, class: "btn btn-outline-success text-dark" %>
+            <%= link_to "About", about_path, class: "btn btn-light" %>
           <div class = "col-1" ></div>
-            <%= link_to "商品一覧", items_path, class: "btn btn-outline-success text-dark" %>
+            <%= link_to "商品一覧", items_path, class: "btn btn-light" %>
           <div class = "col-1" ></div>
-            <%= link_to "新規登録", new_customer_registration_path, class: "btn btn-outline-success text-dark" %>
+            <%= link_to "新規登録", new_customer_registration_path, class: "btn btn-light" %>
           <div class = "col-1" ></div>
-            <%= link_to "ログイン", new_customer_session_path, class: "btn btn-outline-success text-dark" %>
+            <%= link_to "ログイン", new_customer_session_path, class: "btn btn-light" %>
         </div>
 
       <% end %>
