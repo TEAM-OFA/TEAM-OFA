@@ -76,7 +76,7 @@ Rails.application.configure do
 
 
 config.hosts.clear
-config.web_console.allowed_ips = '27.141.90.29'
+
 
 end
 
