@@ -1,0 +1,104 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="mx-auto offset-lg-2">
+      <h2><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</h2>
+
+
+      <%= form_with model: @customer, url: admin_customer_path(@customer), method: :patch, local: true do |f| %>
+      <% render "public/shared/error_messages", resource: @customer %>
+
+
+      <table class="table">
+        <tbody>
+
+          <tr>
+            <td class="field">
+              <th>会員ID</th>
+              <th></th>
+              <td><%= @customer.id %></td>
+              <td></td>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="field">
+              <th>氏名</th>
+              <th></th>
+              <td><%= f.text_field :last_name %></td>
+              <td><%= f.text_field :first_name %></td>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="field">
+              <th>フリガナ</th>
+              <th></th>
+              <td><%= f.text_field :last_name_kana %></td>
+              <td><%= f.text_field :first_name_kana %></td>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="field">
+              <th>郵便番号</th>
+              <th></th>
+              <td><%= f.text_field :post_code %></td>
+              <td></td>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="field">
+              <th>住所</th>
+              <th></th>
+              <td><%= f.text_field :address %></td>
+              <td></td>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="field">
+              <th>電話番号</th>
+              <th></th>
+              <td><%= f.text_field :phone_number %></td>
+              <td></td>
+            </td>
+          </tr>
+
+         <tr>
+           <td class="field">
+             <th>メールアドレス</th>
+             <th></th>
+             <td><%= f.text_field :email %></td>
+             <td></td>
+           </td>
+         </tr>
+
+         <tr>
+           <td class="labeld">
+            <th>会員ステータス</th>
+            <th></th>
+            <td class="custom-control custom-radio custom-control-inline">
+                <%= f.radio_button :is_active, true, checked: @customer.is_active == true, class: 'custom-control-input', id: 'status-active' %>
+                <%= f.label :is_active, '有効', class: 'custom-control-label', for: 'status-active' %>
+            </td>
+
+            <td class="custom-control custom-radio custom-control-inline">
+              <%= f.radio_button :is_active, false, checked: @customer.is_active == false, class: 'custom-control-input', id: 'status-deleted' %>
+              <%= f.label :is_active, '退会済', class: 'custom-control-label', for: 'status-deleted' %>
+            </td>
+         </tr>
+
+         <tr>
+           <td><%= f.submit "変更を保存", class:'btn btn-success' %></td>
+         </tr>
+
+
+      <% end %>
+
+
+    </tbody>
+  </table>
+    </div>
+　</div>
+</div>
