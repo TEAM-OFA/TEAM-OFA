@@ -1,11 +1,11 @@
 class Admin::HomesController < ApplicationController
   before_action :authenticate_admin!
-  
+
    def top
-     @order = current_customer.orders
-     @orders = @customer.orders
-   end 
-   
+     @orders = Order.all.page(params[:page]).per(10
+    #  @orders = @customer.orders
+   end
+
    def destroy
-   end 
+   end
 end
