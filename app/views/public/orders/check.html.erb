@@ -1,1 +1,104 @@
-<h1>かけそば</h1>
+<h3 class = "row justify-content-center col-2 mt-4 ml-5 bg-light" >注文情報確認</h3>
+
+    <div class = "row ml-5 col-12" >
+        <table class = "table table-striped table-bordered col-6" >
+            <thead>
+                <tr>
+                    <th>商品名</th>
+                    <th>単価（税込）</th>
+                    <th>数量</th>
+                    <th>小計</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @cart_items.each do |f| %>
+                    <tr>
+                        <td>
+                            <%= image_tag(f.item.image, size:"120x60") %>
+                            <%= f.item.name %>
+                        </td>
+                        <td>
+                            <%= number_with_delimiter(f.item.with_tax_price) %>
+                        </td>
+                        <td>
+                            <%= f.amount %>
+                        </td>
+                        <td>
+                            <%= number_with_delimiter(f.subtotal) %>
+                        </td>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
+
+        <div class = "m-5" ></div>
+
+        <table class ="table table-striped table-bordered col-4" >
+            <thead>
+                <th>送料</th>
+                <th>商品合計</th>
+                <th>請求金額</th>
+            </thead>
+            <tbody>
+                <td>800</td>
+                <td>
+                    <%= number_with_delimiter(@cart_items.sum(&:subtotal)) %>
+                </td>
+                <td>
+                    <%= number_with_delimiter(@cart_items.sum(&:total)) %>
+                </td>
+            </tbody>
+        </table>
+
+    </div>
+
+    <div class = "m-5" ></div>
+
+    <div class = "row" >
+        <div class = "m-5" ></div>
+        <div>
+            <h4 class = "justify-content-center ml-5" >支払方法</h4>
+        </div>
+        <div class = "ml-5" >
+            <% if @selected_payment_method == "0" %>
+              クレジットカード
+            <% else %>
+              銀行振込
+            <% end %>
+        </div>
+    </div>
+
+    <div class = "row" >
+        <div class = "mr-5 ml-5" ></div>
+        <div>
+            <h4 class = "justify-content-center ml-5">お届け先</h4>
+        </div>
+
+        <div class = "ml-5" >
+            <%= @selected_address %>
+        </div>
+
+        <%= form_with url: thanks_orders_path, method: :GET do %>
+      <%#= hidden_field_tag 'order[address_type]', @address_type %>
+
+      <%# if @address_type == "0" %>
+        <%#= hidden_field_tag 'order[0]', params[:order][:customer.address] %>
+      <%# elsif @address_type == "1" %>
+
+      <%# else @address_type == "2" %>
+        <%#= hidden_field_tag 'order[new_post_code]', params[:order][:new_post_code] %>
+        <%#= hidden_field_tag 'order[new_address]', params[:order][:new_address] %>
+        <%#= hidden_field_tag 'order[new_name]', params[:order][:new_name] %>
+      <%# end %>
+
+    <%# end %>
+
+    </div>
+
+<%#= form_with model: @order, url: thanks_orders_path, local: true do |f| %>
+
+    <div class = "row col-13" >
+        <div class = "col-5" ></div>
+        <%= submit_tag "注文を確定する", class: "btn btn-success mt-5" %>
+    </div>
+<% end %>
