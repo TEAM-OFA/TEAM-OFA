@@ -2,7 +2,7 @@
   <div class="row">
     <div class="mx-auto offset-lg-2">
 
-<h2>ログイン</h2>
+<h2 class ="text-danger"><i class="fa-solid fa-cake-candles"></i> Log in</h2>
 
 <%= form_with model: @customer, url: session_path(resource_name) do |f| %>
 <!--%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>-->
@@ -24,7 +24,7 @@
   <% end %>
 
   <div class="actions">
-    <%= f.submit "ログイン", class:'btn btn-sm btn-primary '%>
+    <%= f.submit "ログイン", class:'btn btn-sm btn-danger'%>
   </div>
 <% end %>
 

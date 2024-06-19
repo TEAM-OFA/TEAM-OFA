@@ -1,12 +1,14 @@
 @use '~bootstrap/scss/bootstrap';
 
-#image-slider {
-  position: relative;
-  width: 350px;
-  height: 150px; /* 任意の高さに設定 */
-  margin: 0 30px 0 150px;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+body {
+  background-color: #FFFAFA
+}
 .slider-image {
   position: absolute;
   top: 0;
@@ -20,3 +22,24 @@
 .slider-image.active {
   opacity: 1;
 }
+
+
+.text-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 13px; 
+  text-align: center;
+  z-index: 100; /* 画像より前面に表示させるために必要な場合があります */
+  background-color: rgba(0, 0, 0, 0.2); /* 半透明の背景色 */
+  padding: 10px 20px;
+  letter-spacing: 3px; /* 文字間隔を広げる */
+  line-height: 1.5; /* 行間隔を広げる */
+}
+footer {
+  margin: 0;
+  padding: 0;
+}
+
