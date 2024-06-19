@@ -3,7 +3,9 @@
     <% if admin_signed_in? %>
         <div class = "col-1" ></div>
         <div class = "mt-1 mr-0 mb-1 ml-0" >
+         <%= link_to root_path do %>
           <%= image_tag 'nagano3.png', size: '200x133' %>
+         <% end %>
         </div>
 
         <div class = "col-3" ></div>
@@ -25,11 +27,15 @@
         <div class = "col-1" ></div>
 
         <div class = "mt-2 mr-4 mb-2 ml-0" >
-          <%= image_tag 'nagano3.png', size: '200x133' %>
+          <%= link_to root_path do %>
+            <%= image_tag 'nagano3.png', size: '200x133' %>
+          <% end %>
         </div>
 
-        <p class = "h2 mt-auto mr-3 mb-auto ml-auto text-white" style="font-family: 'Roboto', fantasy;">Welcome to NAGANO-Cake!</p>
-
+        <p class="h2 mt-auto mr-3 mb-auto ml-auto text-white" style="font-family: 'Roboto', fantasy;">Welcome to NAGANO-Cake!<br>
+          <span style="font-size: 0.6em;">ようこそ、<%= current_customer.last_name_kana %>様!</span>
+        </p>
+        
           <div class = "mt-auto mb-auto ml-auto row col-5" >
               <%= link_to "マイページ", customer_path(current_customer), class: "btn btn-light" %>
             <div class = "col-1" ></div>
@@ -45,7 +51,9 @@
         <div class = "col-1" ></div>
 
         <div class = "mt-2 mr-4 mb-2 ml-0" >
-          <%= image_tag 'nagano3.png', size: '200x133' %>
+          <%= link_to root_path do %>
+            <%= image_tag 'nagano3.png', size: '200x133' %>
+          <% end %>
         </div>
 
         <div class = "col-4" >
