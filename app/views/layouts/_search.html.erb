@@ -1,0 +1,24 @@
+<p>使わない</p>
+<% if admin_signed_in? %>
+  <li class="nav-item">
+    <div class="search_form">
+      <%= form_with(url: admin_search_search_path, local: true, method: :get) do |f| %>
+        <%= f.text_field :word, class: "form-control me-2" %>
+        <%= f.hidden_field :range, value: "商品" %>
+        <%= f.hidden_field :search, value: "partial" %>
+        <%= f.submit "検索", class: "btn btn-outline-danger" %>
+      <% end %>
+    </div>
+  </li>
+<% else %>
+  <li class="nav-item col-md-4">
+    <div class="search_form">
+      <%= form_with(url: public_search_search_path, local: true, method: :get) do |f| %>
+        <%= f.text_field :word, class: "form-control me-2" %>
+        <%= f.hidden_field :range, value: "商品" %>
+        <%= f.hidden_field :search, value: "partial" %>
+        <%= f.submit "検索", class: "btn btn-outline-success" %>
+      <% end %>
+    </div>
+  </li>
+<% end %>

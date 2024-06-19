@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  namespace :public do
+    get 'search/search'
+  end
+  namespace :admin do
+    get 'search/search'
+  end
   devise_for :customers, skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
@@ -13,6 +19,7 @@ scope module: :public do
       get 'check'
       patch 'out'
     end
+  get "search" => "searches#search"
   end
 
   resources :cart_items, only: [:index, :update, :create,:destroy] do
@@ -29,7 +36,7 @@ scope module: :public do
   end
 
   resources :addresses, except: [:new, :show]
-  end
+end
 
 
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
@@ -43,6 +50,7 @@ scope module: :public do
     resources :customers, only: [:index, :show, :edit, :update]
     resources :orders, only: [:show, :update]
     resources :order_details, only: [:update]
+    get "search" => "searches#search"
   end
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  
 end
