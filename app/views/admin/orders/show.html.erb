@@ -1,3 +1,9 @@
+
+<!--更新に成功しました-->
+<div>
+<%= flash[:notice] %>
+</div>
+
 <h2>注文履歴詳細</h2>
 
 <table>
@@ -11,7 +17,54 @@
     <tr>
       <td>注文日</td>
       <td></td>
-      <td></td>
+      <td><%= order.created_at.strftime("%Y/%m/%d %H:%M") %></td>
+    </tr>
+    
+    <tr>
+      <td>配送先</td>
+    </tr>
+    
+    <tr>
+      <td>支払い方法</td>
+    </tr>
+    
+    <tr>
+      <td>注文ステータス</td>
     </tr>
   </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th>商品名</th>
+      <th>単価(税込)</th>
+      <th>数量</th>
+      <th>小計</th>
+      <th>製作ステータス</th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <%= @order_details.each do |order_detail| %>
+    <tr>
+      <td><%= item.name %></td>
+    </tr>
+  </tbody>
+
+
+<!--製作ステータス-->
+<div>
+  <%= form_with model: order_detail, url:admin_order_detail_path(order_detail.id), method: :patch do |f| %>
+    <%= f.select :making_status, [
+      [OrderDatail.making_statuses_i18n[:making_unable], :making_unable],
+      [OrderDetail.making_statuses_i18n[:waiting_for_making], :waiting_for_making],
+      [OrderDetail.making_statuses_i18n[:in_making], :in_making],
+      [OrderDetail.making_statuses_i18n[:making_completed], :making_completed]
+      ] %>
+      
+      <%= f.submit "更新", class:"btn btn-success btn-sm mx-3" %>
+  <% end %>
+</div>
+
 </table>
