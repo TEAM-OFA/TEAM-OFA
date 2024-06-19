@@ -81,5 +81,19 @@
       </td>
     </tr>
   </tbody>
+  
+  <tbody>
+    <tr>
+      <td class="bg-info text-white">商品合計</td>
+      <td><%= number_with_delimiter(@cart_items.sum(&:subtotal)) %></td>
+    </tr>
+    <tr>
+      <td class="bg-info text-white">送料</td>
+    </tr>
+    <tr>
+      <td class="bg-info text-white">請求金額合計</td>
+      <td 
+    </tr>
+  </tbody>
 
 </table>

@@ -23,7 +23,7 @@ scope module: :public do
 
   resources :orders, only: [:new, :create, :index, :show] do
     collection do
-      get 'thanks'
+      get "thanks"
       post "check"
     end
   end
