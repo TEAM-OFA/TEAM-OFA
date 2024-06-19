@@ -1,5 +1,5 @@
 
-  <div class = "ml-5" >
+<div class = "ml-5" >
     <div class = "col-12" >
       <h4 class ="row justify-content-center col-2 mt-4 ml-5 bg-light" >注文情報入力</h4>
     </div>
@@ -8,23 +8,27 @@
     <table>
     <tr>
       <td>
-        <%= f.radio_button :payment_method, 0, checked: "checked", class:"ml-4" %>
+        <%= f.radio_button :payment_method, "0", checked: "checked", class:"ml-4" %>
         <%= f.label :payment_method, "クレジットカード" %>
+        <%#= f.label :payment_method, Order.payment_methods[:credit_card], {value: :クレジットカード} %>
       </td>
     </tr>
 
     <tr>
       <td>
-        <%= f.radio_button :payment_method, 1, class:"ml-4" %>
+        <%= f.radio_button :payment_method, "1", class:"ml-4" %>
         <%= f.label :payment_method, "銀行振込" %>
       </td>
     </tr>
     </table>
 
       <h2>お届け先</h2>
-
-        <%= f.radio_button :address, 0, checked: "checked", class:"ml-4" %>
+      
+      <div class = "ml-4" >
+        <%= radio_button_tag :address_option, 0, checked: true %>
+        <%#= f.radio_button :address, 0, checked: "checked", class:"ml-4" %>
         <%= f.label :address, "ご自身の住所" %><br />
+      </div>
         <div class = "ml-5" >
           <%= @customer.full_address %>
         </div>
@@ -32,8 +36,11 @@
   <table>
     <tr>
       <td>
-        <%= f.radio_button :address, 1, class:"ml-4" %>
-        <%= f.label :address, "登録済みの住所から" %>
+        <div class = "ml-4" >
+          <%= radio_button_tag :address_option, 1 %>
+          <%#= f.radio_button :address, 1, class:"ml-4" %>
+          <%= f.label :address, "登録済みの住所から" %>
+        </div>
       </td>
     </tr>
 
@@ -46,8 +53,13 @@
     </tr>
 
     <tr>
-      <td><%= f.radio_button :address, 2, class:"ml-4" %>
-      <%= f.label :address, "新しいお届け先" %></td>
+      <td>
+        <div class = "ml-4" >
+          <%= radio_button_tag :address_option, 2, class:"ml-4" %>
+          <%#= f.radio_button :address, 2, class:"ml-4" %>
+          <%= f.label :address, "新しいお届け先" %>
+        </div>
+      </td>
     </tr>
   </table>
 
@@ -78,7 +90,7 @@
     </div>
   </div>
 
-      <%= f.submit "更新", class: "btn btn-sm btn-success" %>
+      <%= f.submit "確認画面へ進む", class: "justify-content-center btn btn-sm btn-success" %>
     <% end %>
 
-  </div>
+</div>
