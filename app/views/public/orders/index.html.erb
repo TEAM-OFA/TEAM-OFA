@@ -1,0 +1,25 @@
+<div class = "lert alert-warning" >
+  <h4 class = "d-flex justify-content-center" >注文履歴一覧</h4>
+</div>
+
+<div class = "d-flex justify-content-center" >
+  <table>
+    <thead>
+      <tr>
+        <th>注文日</th>
+        <th>配送先</th>
+        <th>注文商品</th>
+        <th>支払金額</th>
+        <th>ステータス</th>
+        <th>注文詳細</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @orders.each do |f| %>
+        <tr>
+          <td><%= f.created_at %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
