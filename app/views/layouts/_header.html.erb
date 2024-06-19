@@ -3,12 +3,12 @@
     <% if admin_signed_in? %>
         <div class = "col-1" ></div>
         <div class = "mt-1 mr-0 mb-1 ml-0" >
-         <%= link_to root_path do %>
+         <%= link_to admin_path do %>
           <%= image_tag 'nagano3.png', size: '200x133' %>
          <% end %>
         </div>
 
-        <div class = "col-3" ></div>
+        <div class = "col-2" ></div>
 
         <div class = "mt-4 mr-0 mb-4 ml-0 row" >
           <%= link_to "商品一覧", admin_items_path, class: "btn btn-light mt-auto mr-2 mb-auto ml-4 " %>
@@ -20,7 +20,16 @@
           <%= link_to "ジャンル一覧", admin_genres_path, class: "btn btn-light mt-auto mr-2 mb-auto ml-4 " %>
 
           <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-light mt-auto mr-2 mb-auto ml-4 " %>
+          
+        <div class="search_form form-inline ml-3">
+          <%= form_with(url: admin_search_search_path, local: true, method: :get, class: "d-flex") do |f| %>
+            <%= f.text_field :word, class: "form-control me-2", style: "width: 150px;" %>
+            <%= f.hidden_field :range, value: "商品" %>
+            <%= f.hidden_field :search, value: "partial" %>
+            <%= f.submit "検索", class: "btn btn-light btn-sm" %>
+          <% end %>
         </div>
+      </div>
 
       <% elsif customer_signed_in? %>
 
@@ -32,19 +41,31 @@
           <% end %>
         </div>
 
-        <p class="h2 mt-auto mr-3 mb-auto ml-auto text-white" style="font-family: 'Roboto', fantasy;">Welcome to NAGANO-Cake!<br>
-          <span style="font-size: 0.6em;">ようこそ、<%= current_customer.last_name_kana %>様!</span>
+        <p class="h3 mt-auto  mb-auto  text-white" style="font-family: 'Roboto', fantasy;">Welcome to NAGANO-Cake!<br>
+          <span style="font-size: 0.5em;">ようこそ、<%= current_customer.last_name_kana %>様!</span>
         </p>
         
-          <div class = "mt-auto mb-auto ml-auto row col-5" >
+          <div class = "mt-5 mb-5 ml-5 row align-items-center" >
               <%= link_to "マイページ", customer_path(current_customer), class: "btn btn-light" %>
-            <div class = "col-1" ></div>
+            <div class = "mr-3" ></div>
               <%= link_to "商品一覧", items_path, class: "btn btn-light" %>
-            <div class = "col-1" ></div>
+            <div class = "mr-3" ></div>
               <%= link_to "カート", cart_items_path, class: "btn btn-light" %>
-            <div class = "col-1" ></div>
-              <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "btn btn-light" %>
+            <div class = "mr-3" ></div>
+              <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "btn btn-light btn-sm" %>
+              
+            <div class="nav-item col-2 mt-3 ml-2">
+            <div class="search_form form-inline">
+              <%= form_with(url: public_search_search_path, local: true, method: :get, class: "d-flex") do |f| %>
+                 <%= f.text_field :word, class: "form-control me-2", style: "width: 140px;" %>
+                 <%= f.hidden_field :range, value: "商品" %>
+                 <%= f.hidden_field :search, value: "partial" %>
+                 <%= f.submit "検索", class: "btn btn-light" %>
+              <% end %>
+            </div>
+            </div>
           </div>
+    </div>
 
       <% else %>
 
@@ -56,12 +77,6 @@
           <% end %>
         </div>
 
-        <div class = "col-4" >
-          <div id = "image-slider" >
-
-          </div>
-        </div>
-
         <div class = "mt-auto mr-0 mb-auto ml-auto row col-5" >
             <%= link_to "About", about_path, class: "btn btn-light" %>
           <div class = "col-1" ></div>
@@ -71,7 +86,6 @@
           <div class = "col-1" ></div>
             <%= link_to "ログイン", new_customer_session_path, class: "btn btn-light" %>
         </div>
-
       <% end %>
 
 </div>
