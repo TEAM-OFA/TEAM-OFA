@@ -4,8 +4,8 @@ class Admin::OrderDetailsController < ApplicationController
   def update
     @order_detail = OrderDetail.find(params[:id])
     @oder_detail.update(making_status: params[:order_detail][:making_status])
-    order = @order_detail.order
-    if params[:order_detail][making_status] == "in_making"
+    @order = @order_detail.order
+    if params[:order_detail][:making_status] == "in_making"
       order.update(status:"making")
     end 
     
@@ -33,3 +33,4 @@ class Admin::OrderDetailsController < ApplicationController
     return true
   end 
 end
+
