@@ -3,8 +3,8 @@
 
 <div class='container'>
   <div class='row'>
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0">
-      <h2>Log in</h2>
+    <div class="mx-auto offset-lg-2">
+      <h2 class ="text-danger">管理者ログイン</h2>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
        <div class="field">
         <%= f.label :email %><br />
@@ -21,7 +21,7 @@
       </div>
       <% end %>
       <div class="actions">
-       <%= f.submit "Log in", class: 'btn btn-sm btn-primary' %>
+       <%= f.submit "Log in", class: 'btn btn-sm btn-danger' %>
       </div>
       <% end %>
       <%= render "admin/shared/links" %>
