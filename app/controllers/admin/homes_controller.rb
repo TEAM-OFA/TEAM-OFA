@@ -1,6 +1,7 @@
 class Admin::HomesController < ApplicationController
   before_action :authenticate_admin!
 
+
   def top
     # @orders = OrderDetail.all.page(params[:page]).per(10)
     @orders = Order.order(created_at: :desc).includes(:customer, :order_details).page(params[:page]).per(10)
@@ -9,6 +10,10 @@ class Admin::HomesController < ApplicationController
 
   # def index
     # @orders = Order.
+  # def top
+    # @orders = Order.all.page(params[:page]).per(10)
+    #  @orders = @customer.orders
+  # end
 
    def destroy
    end

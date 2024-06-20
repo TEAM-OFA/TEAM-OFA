@@ -1,0 +1,52 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header text-center bg-danger text-white">
+          商品検索結果
+        </div>
+        <div class="card-body">
+          <% if @items.any? %>
+            <% @items.each do |item| %>
+              <div class="row mb-4">
+                <div class="col-md-4">
+                  <%= image_tag item.image, size: "250x180", class: "img-fluid" %>
+                </div>
+                <div class="col-md-8">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">商品名</th>
+                        <th scope="col">税抜き価格</th>
+                        <th scope="col">ジャンル</th>
+                        <th scope="col">ステータス</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><%= link_to admin_item_path(item) do %>
+                          <%= item.name %>
+                        <% end %></td>
+                        <td><%= number_with_delimiter(item.price) %>円</td>
+                        <td><%= item.genre.name %></td>
+                        <td>
+                          <% if item.is_active %>
+                            <span style="color: green;">販売中</span>
+                          <% else %>
+                            <span style="color: gray;">販売停止</span>
+                          <% end %>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            <% end %>
+          <% else %>
+            <p>検索結果がありません。</p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
