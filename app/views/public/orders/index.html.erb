@@ -18,6 +18,12 @@
       <% @orders.each do |f| %>
         <tr>
           <td><%= f.created_at %></td>
+          <td><%= f.address %></td>
+          <td>
+            <% f.order_details.each do |order_detail| %>
+              <%= order_detail.item.name %>
+            <% end %>
+          </td>
         </tr>
       <% end %>
     </tbody>

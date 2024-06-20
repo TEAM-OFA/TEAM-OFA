@@ -13,6 +13,7 @@ class Public::OrdersController < ApplicationController
     @order = Order.new(order_params)
     @shopping_cost = 800
     @order.status = 0
+
     @selected_payment_method = params[:order][:payment_method]
 
     address_option = params[:address_option]
@@ -46,8 +47,19 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
+    cart_items = current_customer.cart_items.all
     @order = Order.new(order_params)
-    @order.save
+    if @order.save
+      cart_items.each do |cart|
+        OrderDetail.create!(
+        item_id: cart.item.id,
+        amount: cart.amount,
+        price: cart.item.price,
+        order_id: @order.id,
+        making_status: 0
+        )
+      end
+    end
 
     if params[:address_option] == "2"
       current_customer.address.create(address_params)

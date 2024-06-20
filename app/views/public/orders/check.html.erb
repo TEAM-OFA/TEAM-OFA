@@ -79,7 +79,7 @@
         </div>
 
     </div>
-    <%= @order.name %>
+    
     <div class = "row" >
         <div class = "col-5" ></div>
         <div class = "col" >
@@ -92,6 +92,7 @@
         <%= f.hidden_field :shopping_cost, :value =>@shopping_cost %>
         <%= f.hidden_field :total_payment, :value => @cart_items.sum(&:total) %>
         <%= f.hidden_field :status, :value => @order.status %>
+        <%#= f.hidden_field :item_name, :value => @cart_items %>
         <%= f.submit"注文を確定する", class: "btn btn-success mt-5" %>
         <% end %>
         </div>
