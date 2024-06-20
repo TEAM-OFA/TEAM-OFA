@@ -45,7 +45,7 @@
                     <%= number_with_delimiter(@cart_items.sum(&:subtotal)) %>
                 </td>
                 <td>
-                    <%= number_with_delimiter(@cart_items.sum(&:total)) %>
+                    <%= number_with_delimiter(@cart_items.sum(&:subtotal)+@shopping_cost) %>
                 </td>
             </tbody>
         </table>
