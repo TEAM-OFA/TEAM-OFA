@@ -49,28 +49,6 @@
 
 <img width="599" alt="スクリーンショット 2024-06-20 13 15 45" src="https://github.com/TEAM-OFA/TEAM-OFA/assets/166374884/05afcab1-a488-42d4-aff9-e5b007776561">
 
-# 開発環境
-cloud9
-
-ruby on rails
-
-# 使用言語
-
-HTML&CSS
-
-ruby
-
-Rails 6.1.7.8
-
-# Gem
-
-devise
-
-kaminari
-
-rails-i18n
-
-bootstrap-sass
 
 # 使用方法
 
@@ -99,6 +77,29 @@ bootstrap-sass
 
 支払い方法はクレジットカードもしくは銀行振り込みから選択していただき、注文確定を押すと注文が完了いたします。
 
-#　作成者
-チームOFA（one for all）
+# 開発環境
+cloud9
 
+ruby on rails
+
+# 使用言語
+
+HTML&CSS
+
+ruby
+
+Rails 6.1.7.8
+
+# Gem
+
+devise
+
+kaminari
+
+rails-i18n
+
+bootstrap-sass
+
+# 作成者
+
+チームOFA（one for all）
