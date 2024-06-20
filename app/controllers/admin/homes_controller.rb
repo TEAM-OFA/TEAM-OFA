@@ -4,8 +4,9 @@ class Admin::HomesController < ApplicationController
    def top
      @orders = Order.all.page(params[:page]).per(10)
     #  @orders = @customer.orders
-   end
+   end 
 
    def destroy
    end
+
 end
