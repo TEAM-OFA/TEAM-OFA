@@ -5,9 +5,11 @@ class Admin::OrdersController < ApplicationController
 
     def show
      @order = Order.find(params[:id])
-     @order_detaiis = @order.order_details
      @customer = Customer.find(params[:customer_id])
-     @orders = @customer.orders
+     @item = Item.find(params[:id])
+     @order_detaiis = @order.order_details
+     @oder_items = @order.order_details
+     @total_item_amount = @order_details.sum { |order_detail| order_detail.subtotal }
     end
 
    def update

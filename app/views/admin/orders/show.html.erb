@@ -60,12 +60,12 @@
   </thead>
 
   <tbody>
-    <%= @order_details.each do |order_detail| %>
+    <%= @order_items.each do |item| %>
     <tr>
-      <td><%= order_detail.product.name %></td>
-      <td><%= (order_detail.price * 1.1).floor %></td>
-      <td><%= order_detail.amount %></td>
-      <td><%= (order_detail.price * order_detail.amount * 1.1) %></td>
+      <td><%= item.item.name %></td>
+      <td><%= item.item.with_tax_price %></td>
+      <td><%= item.amount %></td>
+      <td><%= item.subtotal %></td>
       <td> <!--製作ステータス-->
           <%= form_with model: order_detail, url:admin_order_detail_path(order_detail.id), method: :patch do |f| %>
             <%= f.select :making_status, [
@@ -85,15 +85,18 @@
   <tbody>
     <tr>
       <td class="bg-info text-white">商品合計</td>
-      <td><%= number_with_delimiter(@cart_items.sum(&:subtotal)) %></td>
+      <td><%= @order.total_item_amount.to_s(:delimited) %></td>
+      <td>円</td>
     </tr>
     <tr>
       <td class="bg-info text-white">送料</td>
+      <td><%= @order.shopping_cost.to_s(:delimited) %></td>
+      <td>円</td>
     </tr>
     <tr>
       <td class="bg-info text-white">請求金額合計</td>
-      <td 
+      <td><%= @order.total_payment.to_s(:delimited) %></td>
+      <td>円</td>
     </tr>
   </tbody>
-
 </table>
