@@ -31,9 +31,9 @@ class Public::OrdersController < ApplicationController
       	else
       	  render :new
       	end
-      else
+       else
         render :new
-      end
+       end
 
   end
 
