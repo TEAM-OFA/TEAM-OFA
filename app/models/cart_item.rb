@@ -7,15 +7,15 @@ class CartItem < ApplicationRecord
  def with_tax_price
    return (price*1.1).floor
 
- end 
- 
+ end
+
  def subtotal
    item.with_tax_price*amount
- end 
- 
+ end
+
  def total
   subtotal+800
  end
- 
+
 end
 

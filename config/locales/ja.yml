@@ -7,8 +7,7 @@ ja:
         in_making: "製作中"
         making_completed: "製作完了"
 
-ja:
-  enums:
+
     order:
       order_status:
         waiting_for_payment: "入金待ち"

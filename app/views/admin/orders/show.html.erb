@@ -1,17 +1,14 @@
 
-<!--更新に成功しました-->
-<div>
-<%= flash[:notice] %>
-</div>
+
 
 <h2>注文履歴詳細</h2>
-
-<table>
+<!--%= @order_details.each do |order| %>-->
+<table class="is_border">
   <tbody>
     <tr>
       <td>購入者</td>
       <td></td>
-      <td><%= @order.last_name %><%= @order.first_name %></td>
+      <td><%= @order.customer.last_name %><%= @order.customer.first_name %></td>
     </tr>
 
     <tr>
@@ -32,9 +29,10 @@
       <td><%= @order.payment_method %></td>
     </tr>
 
-    <tr>
-      <td>注文ステータス</td>
-      <%= form_with model: order, url:admin_order_path(@order), method: :patch do |f| %>
+
+   <tr>
+    <td>注文ステータス</td>
+      <%= form_with model: @order, url:admin_order_path(@order), method: :patch do |f| %>
         <%= f.select :order_status, [
           [Order.order_statuses_i18n[:waiting_for_payment], :waiting_for_payment],
           [Order.order_statuses_i18n[:payment_confirmation], :payment_confirmation],
@@ -43,6 +41,12 @@
           [Order.order_statuses_i18n[:shipped], :shipped]
         ] %>
       <% end %>
+    </tr>
+
+
+    <!--% end %>-->
+
+    <tr>
 
     </tr>
   </tbody>
@@ -60,12 +64,15 @@
   </thead>
 
   <tbody>
-    <%= @order_items.each do |item| %>
+    <% @order_details.each do |order_detail| %>
     <tr>
-      <td><%= item.item.name %></td>
-      <td><%= item.item.with_tax_price %></td>
-      <td><%= item.amount %></td>
-      <td><%= item.subtotal %></td>
+      <td><%= order_detail.item.name %></td>
+      <td><%= order_detail.item.with_tax_price %></td>
+      <td><%= order_detail.amount %></td>
+      <td><%= order_detail.subtotal %></td>
+
+
+
       <td> <!--製作ステータス-->
           <%= form_with model: order_detail, url:admin_order_detail_path(order_detail.id), method: :patch do |f| %>
             <%= f.select :making_status, [
@@ -77,15 +84,14 @@
 
               <%= f.submit "更新", class:"btn btn-success btn-sm mx-3" %>
           <% end %>
-      <% end %>
-      </td>
+     <% end %>
     </tr>
   </tbody>
-  
+
   <tbody>
     <tr>
       <td class="bg-info text-white">商品合計</td>
-      <td><%= @order.total_item_amount.to_s(:delimited) %></td>
+      <td><%= @order.total_payment-800 %></td>
       <td>円</td>
     </tr>
     <tr>

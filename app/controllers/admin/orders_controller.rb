@@ -5,11 +5,11 @@ class Admin::OrdersController < ApplicationController
 
     def show
      @order = Order.find(params[:id])
-     @customer = Customer.find(params[:customer_id])
+     # @customer = Customer.find(params[:id])
      @item = Item.find(params[:id])
-     @order_detaiis = @order.order_details
-     @oder_items = @order.order_details
-     @total_item_amount = @order_details.sum { |order_detail| order_detail.subtotal }
+     @order_details = @order.order_details
+     # @oder_items = @order.order_details
+     # @total_item_amount = @order_details.sum { |order_detail| order_detail.subtotal }
     end
 
    def update
@@ -17,12 +17,12 @@ class Admin::OrdersController < ApplicationController
     @order.update(order_params)
     redirect_to admin_orders_path
    end
-    
+
   private
 
   def order_params
    params.require(:order).permit(:order_status)
   end
 
-end 
+end
 
