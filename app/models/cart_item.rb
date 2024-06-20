@@ -15,7 +15,7 @@ class CartItem < ApplicationRecord
  
  def total
   subtotal+800
-
  end
+ 
 end
 

@@ -8,7 +8,7 @@
     <table>
     <tr>
       <td>
-        <%= f.radio_button :payment_method, "0", checked: "checked", class:"ml-4" %>
+        <%= f.radio_button :payment_method, Order.payment_methods.key(0), checked: "checked", class:"ml-4" %>
         <%= f.label :payment_method, "クレジットカード" %>
         <%#= f.label :payment_method, Order.payment_methods[:credit_card], {value: :クレジットカード} %>
       </td>
@@ -16,14 +16,14 @@
 
     <tr>
       <td>
-        <%= f.radio_button :payment_method, "1", class:"ml-4" %>
+        <%= f.radio_button :payment_method, Order.payment_methods.key(1), class:"ml-4" %>
         <%= f.label :payment_method, "銀行振込" %>
       </td>
     </tr>
     </table>
 
       <h2>お届け先</h2>
-      
+
       <div class = "ml-4" >
         <%= radio_button_tag :address_option, 0, checked: true %>
         <%#= f.radio_button :address, 0, checked: "checked", class:"ml-4" %>
