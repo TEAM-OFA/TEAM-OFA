@@ -48,7 +48,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
-    cart_items = current_customer.cart_items.all
+    cart_items = current_customer.cart_items
     @order = Order.new(order_params)
     if @order.save
       cart_items.each do |cart|
