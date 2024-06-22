@@ -9,4 +9,3 @@ Admin.create!(
  email: 'ofa@admin.com',
  password: 'test1test2'
 )
-

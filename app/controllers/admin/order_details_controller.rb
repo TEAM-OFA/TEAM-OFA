@@ -4,17 +4,17 @@ class Admin::OrderDetailsController < ApplicationController
 
   def update
     @order_detail = OrderDetail.find(params[:id])
-    @oder_detail.update(making_status: params[:order_detail][:making_status])
+    @order_detail.update(making_status: params[:order_detail][:making_status])
     @order = @order_detail.order
     if params[:order_detail][:making_status] == "in_making"
-      order.update(status:"making")
+      @order.update(status: 2)
     end
 
-    if is_all_order_details_making_completed(order)
-      order.update(status: 'shipping_in_process')
+    if is_all_order_details_making_completed(@order)
+      @order.update(status: 'shipping_in_process')
     end
 
-    flash[:notice] = "更新に成功しました"
+    # flash[:notice] = "更新に成功しました"
     redirect_to admin_order_path(@order_detail.order.id)
   end
 

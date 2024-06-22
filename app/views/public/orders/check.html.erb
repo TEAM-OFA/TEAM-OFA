@@ -45,7 +45,7 @@
                     <%= number_with_delimiter(@cart_items.sum(&:subtotal)) %>
                 </td>
                 <td>
-                    <%= number_with_delimiter(@cart_items.sum(&:total)) %>
+                    <%= number_with_delimiter(@cart_items.sum(&:subtotal)+@shopping_cost) %>
                 </td>
             </tbody>
         </table>
@@ -79,7 +79,7 @@
         </div>
 
     </div>
-    
+
     <div class = "row" >
         <div class = "col-5" ></div>
         <div class = "col" >
@@ -90,7 +90,7 @@
         <%= f.hidden_field :name, :value => @order.name %>
         <%= f.hidden_field :customer_id, :value => current_customer.id %>
         <%= f.hidden_field :shopping_cost, :value =>@shopping_cost %>
-        <%= f.hidden_field :total_payment, :value => @cart_items.sum(&:total) %>
+        <%= f.hidden_field :total_payment, :value => @cart_items.sum(&:subtotal)+@shopping_cost %>
         <%= f.hidden_field :status, :value => @order.status %>
         <%#= f.hidden_field :item_name, :value => @cart_items %>
         <%= f.submit"注文を確定する", class: "btn btn-success mt-5" %>

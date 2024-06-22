@@ -40,10 +40,11 @@ class Public::OrdersController < ApplicationController
       	else
       	  render :new
       	end
-      else
+       else
         render :new
-      end
-      p @order
+    end
+
+
   end
 
   def create
@@ -80,6 +81,9 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
+    @order = Order.find(params[:id])
+    @order_details = @order.order_details
+    @shopping_cost = 800
   end
 
   def thanks

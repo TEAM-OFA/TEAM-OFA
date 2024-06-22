@@ -8,7 +8,7 @@
         <p>
 
           <strong class="col-xs-2">購入者</strong>
-          <%= link_to admin_customer_path(@order) do %>
+          <%= link_to admin_customer_path(@order.customer.id) do %>
             <%= @order.customer.last_name %><%= @order.customer.first_name %>
           <% end %>
         </p>
@@ -93,26 +93,27 @@
     </div>
   </div>
 
-  <div class="col-xs-4">
-    <div>
-      <p>
-        <strong class="col-xs-3">商品合計</strong>
-        <%= (@order.total_payment - 800).to_s(:delimited) %>円
-      </p>
-    </div>
+  <!--ここからいじってる-->
+  <div class="col-1"></div>
+  <div class="col-md-4">
+    <table class="table table-bordered">
+    <tbody>
+      <tr>
+        <td>商品合計</td>
+        <td><%= (@order.total_payment - 800).to_s(:delimited) %>円</td>
+      </tr>
 
-    <div>
-      <p>
-        <strong class="col-xs-3">送料</strong>
-        <%= @order.shopping_cost.to_s(:delimited) %>円
-      </p>
-    </div>
-    <div>
-      <p>
-        <strong class="col-xs-3">請求金額合計</strong>
-        <%= @order.total_payment.to_s(:delimited) %>円
-      </p>
-    </div>
+      <tr>
+        <td>送料</td>
+        <td><%= @order.shopping_cost.to_s(:delimited) %>円</td>
+      </tr>
 
+      <tr>
+        <td>請求金額合計</td>
+        <td><%= @order.total_payment.to_s(:delimited) %>円</td>
+      </tr>
+    </tbody>
+   </table>
+   </div>
   </div>
 

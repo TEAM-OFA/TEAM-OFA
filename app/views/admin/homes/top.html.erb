@@ -32,6 +32,7 @@
           <td><%= order.order_details.sum(:amount) %></td>
         </tr>
        <% end %>
+
       <td><%= paginate(@orders) %></td>
       </tbody>
     </table>
