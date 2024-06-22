@@ -121,7 +121,7 @@ ActiveRecord::Schema.define(version: 2024_06_15_053228) do
     t.string "name", null: false
     t.string "post_code", null: false
     t.string "address", null: false
-    t.integer "status", null: false
+    t.integer "order_status", null: false
     t.integer "shopping_cost", null: false
     t.integer "total_payment", null: false
     t.datetime "created_at", precision: 6, null: false

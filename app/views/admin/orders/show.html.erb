@@ -93,14 +93,15 @@
     </div>
   </div>
 
- 
+
   <div class="col-1"></div>
   <div class="col-md-4">
     <table class="table table-bordered">
     <tbody>
       <tr>
         <td>商品合計</td>
-        <td><%= (@order.total_payment - 800).to_s(:delimited) %>円</td>
+        <td><%= number_with_delimiter(@order.total_payment - 800) %>
+          <%#= (@order.total_payment - 800).to_s(:delimited) %>円</td>
       </tr>
 
       <tr>

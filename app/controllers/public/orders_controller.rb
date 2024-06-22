@@ -12,7 +12,7 @@ class Public::OrdersController < ApplicationController
     @customer = current_customer
     @order = Order.new(order_params)
     @shopping_cost = 800
-    @order.status = 0
+    @order.order_status = 0
 
     @selected_payment_method = params[:order][:payment_method]
 
@@ -92,7 +92,7 @@ class Public::OrdersController < ApplicationController
 private
 
   def order_params
-    params.require(:order).permit(:customer_id, :payment_method, :post_code, :status, :shopping_cost, :total_payment, :address, :name)
+    params.require(:order).permit(:customer_id, :payment_method, :post_code, :order_status, :shopping_cost, :total_payment, :address, :name)
   end
 
 end

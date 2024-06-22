@@ -29,7 +29,7 @@
             <% end %>
           </td>
           <td><%= f.total_payment %>円</td>
-          <td><%= f.status %></td>
+          <td><%= f.order_status_i18n %></td>
           <td><%= link_to "詳細", order_path(f.id) %></td>
         </tr>
       <% end %>
