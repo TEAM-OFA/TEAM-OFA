@@ -42,7 +42,7 @@ class Public::OrdersController < ApplicationController
       	end
        else
         render :new
-       end
+    end
 
 
   end
@@ -61,6 +61,9 @@ class Public::OrdersController < ApplicationController
         )
       end
     end
+
+
+
 
     if params[:address_option] == "2"
       current_customer.address.create(address_params)
@@ -93,3 +96,4 @@ private
   end
 
 end
+

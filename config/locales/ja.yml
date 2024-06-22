@@ -7,3 +7,13 @@ ja:
         in_making: "製作中"
         making_completed: "製作完了"
 
+
+    order:
+      order_status:
+        waiting_for_payment: "入金待ち"
+        payment_confirmation: "入金確認"
+        making: "製作中"
+        shipping_in_process: "発送準備中"
+        shipped: "発送済み"
+
+
