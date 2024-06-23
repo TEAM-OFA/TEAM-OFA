@@ -24,19 +24,22 @@ class Public::SessionsController < Devise::SessionsController
   protected
 
   def reject_customer
-    @customer = Customer.find_by(email: params[:customer][:email])
-    if @customer
+  @customer = Customer.find_by(email: params[:customer][:email])
 
-      if @customer.valid_password?(params[:customer][:password]) && (@customer.is_active == false)
-        flash[:notice] = "退会済みです。再度ご登録をしてご利用ください。"
-        redirect_to new_customer_registration
-
-      else
-        flash[:notice] = "項目を入力してください"
-      end
+  if @customer && @customer.valid_password?(params[:customer][:password])
+    if @customer.is_active
+      sign_in(@customer) # ログイン処理を実行
+      redirect_to root_path
+    else
+      flash[:withdrawal_notice] = "退会済みです。再度ご登録をしてご利用ください。"
+      redirect_to new_customer_registration_path
     end
+  else
+    # 該当するユーザが見つからない場合やパスワードが違う場合の処理
+    flash[:login_notice] = "メールアドレスまたはパスワードが正しくありません。"
+    redirect_to new_customer_session_path
   end
-
+ end
 
 
 

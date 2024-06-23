@@ -57,7 +57,11 @@
    </div>
    <div class="row justify-content-center">
      <div class="col-md-12 text-center">
+       <% if @cart_items.empty? %>
+       <h4 class ='btn btn-outline-danger'>現在カートに商品はありません。</h4>
+       <% else %>
        <%= link_to '注文情報入力へ進む', new_order_path, class: 'btn btn-outline-success' %>
+       <% end %>
      </div>
    </div>
   </div>
