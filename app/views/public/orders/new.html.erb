@@ -25,7 +25,7 @@
       <h2>お届け先</h2>
 
       <div class = "ml-4" >
-        <%= radio_button_tag :address_option, 0, checked: true %>
+        <%= radio_button_tag :address_option, '0', id: 'self', checked: true %>
         <%#= f.radio_button :address, 0, checked: "checked", class:"ml-4" %>
         <%= f.label :address, "ご自身の住所" %><br />
       </div>
@@ -37,7 +37,7 @@
     <tr>
       <td>
         <div class = "ml-4" >
-          <%= radio_button_tag :address_option, 1 %>
+          <%= radio_button_tag :address_option, '1', false, id: 'registered' %>
           <%#= f.radio_button :address, 1, class:"ml-4" %>
           <%= f.label :address, "登録済みの住所から" %>
         </div>
@@ -47,7 +47,7 @@
     <tr>
       <td>
         <div class = "ml-5" >
-          <%= f.select :address_id, @addresses.all.map {|address|["〒" + address.post_code + address.address + address.name,address.id]} %>
+          <%= f.select :address_id, options_from_collection_for_select(@addresses, :id, :full_address) %>
         </div>
       </td>
     </tr>
@@ -55,7 +55,7 @@
     <tr>
       <td>
         <div class = "ml-4" >
-          <%= radio_button_tag :address_option, 2, class:"ml-4" %>
+          <%= radio_button_tag :address_option, '2', false, id: 'new' %>
           <%#= f.radio_button :address, 2, class:"ml-4" %>
           <%= f.label :address, "新しいお届け先" %>
         </div>
@@ -90,7 +90,7 @@
     </div>
   </div>
 
-      <%= f.submit "確認画面へ進む", class: "justify-content-center btn btn-sm btn-success" %>
+      <%= f.submit "確認画面へ進む", class: "justify-content-center btn btn-sm btn-success", id: "submit" %>
     <% end %>
 
 </div>
