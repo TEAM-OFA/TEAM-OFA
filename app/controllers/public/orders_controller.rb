@@ -1,5 +1,6 @@
 class Public::OrdersController < ApplicationController
   before_action :authenticate_customer!
+  before_action :request_post?,only:[:check]
 
   def new
     @customer = current_customer
@@ -18,13 +19,13 @@ class Public::OrdersController < ApplicationController
 
     address_option = params[:address_option]
 
-    case address_option
-      when "0"
+    # case address_option
+      if address_option == "0"
         @selected_address = "〒" + @customer.post_code + "　" + @customer.address + "　" + @customer.last_name + @customer.first_name
         @order.address = @customer.address
         @order.name = @customer.last_name + @customer.first_name
         @order.post_code = @customer.post_code
-      when "1"
+      elsif address_option == "1"
         # unless params[:order][:registered_address_id] == ""
           selected = Address.find(params[:order][:address_id])
           @selected_address = "〒" + selected.post_code + "　" + selected.address + "　" + selected.name
@@ -34,15 +35,12 @@ class Public::OrdersController < ApplicationController
     	 # else
     	 # render :new
     	 # end
-      when "2"
-        @addresses = current_customer.addresses
-        pp @addresses
-        render :new if @order.invalid?
-       else
+      elsif address_option == "2"
+        unless @order.post_code? && @order.address? && @order.name?
         render :new
-    end
-
-
+        end
+        @selected_address = "〒" + @order.post_code + "　" + @order.address + "　" + @order.name
+      end
   end
 
   def create
@@ -91,6 +89,10 @@ private
 
   def order_params
     params.require(:order).permit(:customer_id, :payment_method, :post_code, :order_status, :shopping_cost, :total_payment, :address, :name)
+  end
+
+  def request_post?
+    redirect_to new_order_path, notice:"配送先の中身を埋めてください" unless request.post?
   end
 
 end

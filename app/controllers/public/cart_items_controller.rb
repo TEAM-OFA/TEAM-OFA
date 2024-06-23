@@ -2,8 +2,7 @@ class Public::CartItemsController < ApplicationController
   before_action :authenticate_customer!, only: [:create]
 
   def index
-    @cart_items = CartItem.all
-
+    @cart_items = current_customer.cart_items
   end
 
   def create
@@ -24,8 +23,8 @@ class Public::CartItemsController < ApplicationController
 
   # リダイレクト
   redirect_to cart_items_path, notice: 'カートに商品を追加しました。'
-end
 
+end
   def update
     @cart_item =current_customer.cart_items.find(params[:id])
     @cart_item.update(cart_item_params)
