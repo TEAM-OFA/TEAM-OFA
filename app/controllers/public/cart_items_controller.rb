@@ -4,7 +4,7 @@ class Public::CartItemsController < ApplicationController
   def index
     @cart_items = current_customer.cart_items
   end
-  
+
   def create
   # 新しいカートアイテムの作成
   @cart_item = current_customer.cart_items.new(cart_item_params)
@@ -23,28 +23,28 @@ class Public::CartItemsController < ApplicationController
 
   # リダイレクト
   redirect_to cart_items_path, notice: 'カートに商品を追加しました。'
-  end 
-  
+
+end
   def update
     @cart_item =current_customer.cart_items.find(params[:id])
     @cart_item.update(cart_item_params)
     redirect_to cart_items_path
-  end 
-  
+  end
+
   def destroy
     @cart_item = current_customer.cart_items.find(params[:id])
     @cart_item.destroy
     redirect_to cart_items_path, notice: 'カートアイテムを削除しました。'
-  end 
-  
+  end
+
   def destroy_all
     @cart_items = current_customer.cart_items.destroy_all
     redirect_to cart_items_path, notice: 'カートを空にしました。'
-  end 
-  
+  end
+
   private
   def cart_item_params
       params.require(:cart_item).permit(:item_id, :amount)
   end
-  
+
 end
