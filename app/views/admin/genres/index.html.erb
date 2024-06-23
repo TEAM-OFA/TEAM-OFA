@@ -5,9 +5,9 @@
 <div class="container mt-5">
   <div class="row justify-content-center">
     <div class="col-md-8">
-      
+
       <h4 class="card-header mb-4">ジャンル一覧・追加</h4>
-      
+
       <%= form_with model: @genre, url: admin_genres_path, method: :post, class: "form-inline" do |f| %>
         <div class="form-group mr-2">
           <label for="item_name" class="mr-3"><h5>ジャンル名</h5></label>
