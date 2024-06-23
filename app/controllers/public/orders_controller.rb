@@ -35,11 +35,9 @@ class Public::OrdersController < ApplicationController
     	 # render :new
     	 # end
       when "2"
-        unless params[:order][:post_code] == "" && params[:order][:address] == "" && params[:order][:name] == ""
-	        @selected_address = "〒" + params[:order][:post_code] + "　" + params[:order][:address] + "　" + params[:order][:name]
-      	else
-      	  render :new
-      	end
+        @addresses = current_customer.addresses
+        pp @addresses
+        render :new if @order.invalid?
        else
         render :new
     end
