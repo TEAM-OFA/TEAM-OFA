@@ -6,6 +6,8 @@ class Admin::OrderDetailsController < ApplicationController
     @order_detail = OrderDetail.find(params[:id])
     @order_detail.update(making_status: params[:order_detail][:making_status])
     @order = @order_detail.order
+
+
     if params[:order_detail][:making_status] == "in_making"
       @order.update(order_status: 2)
     end
@@ -14,7 +16,7 @@ class Admin::OrderDetailsController < ApplicationController
       @order.update(order_status: 'shipping_in_process')
     end
 
-    # flash[:notice] = "更新に成功しました"
+
     redirect_to admin_order_path(@order_detail.order.id)
   end
 
@@ -34,5 +36,6 @@ class Admin::OrderDetailsController < ApplicationController
     return true
   end
 end
+
 
 

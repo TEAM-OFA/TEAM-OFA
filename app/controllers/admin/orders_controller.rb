@@ -6,13 +6,18 @@ class Admin::OrdersController < ApplicationController
     def show
      @order = Order.find(params[:id])
      @order_details = @order.order_details
-    
+
     end
 
    def update
     @order = Order.find(params[:id])
-    @order.update(order_params)
+    @order.update(order_status: params[:order][:order_status])
+    @order_detail = @order.order_details
     redirect_to admin_order_path
+
+    if params[:order][:order_status] == "payment_confirmation"
+     @order_detail.update(making_status: 1)
+    end
    end
 
   private
